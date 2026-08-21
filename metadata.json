@@ -1,0 +1,6 @@
+{
+  "name": "Season diet",
+  "description": "Indian seasonal health and meal-planning app with regional produce recommendations, climate adaptation, cuisine styles (Punjabi, Bengali, South Indian, Gujarati, Maharashtrian, etc.), and customizable weekly meal charts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

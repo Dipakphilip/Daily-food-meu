@@ -320,7 +320,7 @@ export default function App() {
   }, [recipeFilterCuisine, recipeFilterDiet, recipeSearchQuery]);
 
   return (
-    <div className="min-h-screen bg-stone-950 text-stone-100 flex flex-col font-sans selection:bg-amber-500 selection:text-stone-950">
+    <div className="min-h-screen bg-gradient-to-b from-amber-50/60 via-stone-50 to-orange-50/40 text-stone-800 flex flex-col font-sans selection:bg-amber-500 selection:text-white">
       
       {/* 1. Header Navigation Bar */}
       <Header
@@ -402,14 +402,14 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             
             {/* Header Banner */}
-            <div className="bg-stone-900 border border-stone-800 rounded-2xl p-5 sm:p-6 mb-6 shadow-sm">
+            <div className="bg-gradient-to-r from-orange-500 via-amber-500 to-emerald-600 rounded-2xl p-5 sm:p-6 mb-6 shadow-md text-white">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                  <h2 className="text-2xl font-bold text-stone-100 font-serif flex items-center gap-2">
-                    <CookingPot className="w-6 h-6 text-amber-400" />
+                  <h2 className="text-2xl font-bold font-serif flex items-center gap-2 text-white">
+                    <CookingPot className="w-6 h-6 text-amber-200" />
                     Everyday Homestyle Regional Indian Recipes
                   </h2>
-                  <p className="text-sm text-stone-400 mt-1">
+                  <p className="text-sm text-orange-100 mt-1 max-w-2xl">
                     Authentic recipes spanning Punjabi, Bengali, South Indian, Gujarati, Maharashtrian, Rajasthani, Bihari, Kashmiri, Goan, and Odia culinary traditions.
                   </p>
                 </div>
@@ -422,26 +422,26 @@ export default function App() {
                     value={recipeSearchQuery}
                     onChange={(e) => setRecipeSearchQuery(e.target.value)}
                     placeholder="Search vegetable or recipe..."
-                    className="w-full pl-10 pr-4 py-2 bg-stone-950 border border-stone-800 rounded-xl text-xs sm:text-sm text-stone-200 placeholder-stone-500 focus:outline-none focus:border-amber-500"
+                    className="w-full pl-10 pr-4 py-2 bg-white/95 text-stone-800 placeholder-stone-400 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 shadow-inner"
                   />
                 </div>
               </div>
 
               {/* Filter Controls */}
-              <div className="mt-5 pt-4 border-t border-stone-800/80 flex flex-col gap-3">
+              <div className="mt-5 pt-4 border-t border-white/20 flex flex-col gap-3">
                 {/* Cuisine Filter Pills */}
                 <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-                  <span className="text-xs font-semibold text-amber-400 uppercase tracking-wide shrink-0 flex items-center gap-1">
+                  <span className="text-xs font-semibold text-amber-100 uppercase tracking-wide shrink-0 flex items-center gap-1">
                     <Filter className="w-3.5 h-3.5" /> Cuisine:
                   </span>
                   {CUISINES_LIST.map((cuisine) => (
                     <button
                       key={cuisine}
                       onClick={() => setRecipeFilterCuisine(cuisine)}
-                      className={`px-3 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer border ${
+                      className={`px-3 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                         recipeFilterCuisine === cuisine
-                          ? 'bg-amber-500 text-stone-950 border-amber-400 shadow-sm'
-                          : 'bg-stone-950 text-stone-300 border-stone-800 hover:border-stone-700'
+                          ? 'bg-white text-orange-700 shadow-md font-bold'
+                          : 'bg-white/15 text-white hover:bg-white/25 border border-white/20'
                       }`}
                     >
                       {cuisine}
@@ -450,24 +450,24 @@ export default function App() {
                 </div>
 
                 {/* Diet Filter Pills */}
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-semibold text-stone-400 uppercase tracking-wide shrink-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-xs font-semibold text-orange-100 uppercase tracking-wide shrink-0">
                     Diet:
                   </span>
                   {(['All', 'Vegetarian', 'Non-Vegetarian', 'Eggitarian'] as const).map((diet) => (
                     <button
                       key={diet}
                       onClick={() => setRecipeFilterDiet(diet)}
-                      className={`px-2.5 py-0.5 rounded-lg text-xs font-medium transition-all cursor-pointer border ${
+                      className={`px-2.5 py-0.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                         recipeFilterDiet === diet
-                          ? 'bg-stone-100 text-stone-950 border-white font-bold'
-                          : 'bg-stone-950 text-stone-400 border-stone-800 hover:text-stone-200'
+                          ? 'bg-white text-orange-700 shadow font-bold'
+                          : 'bg-white/15 text-white hover:bg-white/25 border border-white/20'
                       }`}
                     >
                       {diet}
                     </button>
                   ))}
-                  <span className="text-xs text-stone-500 ml-auto">
+                  <span className="text-xs text-orange-100 ml-auto font-medium">
                     Showing {filteredRecipes.length} recipes
                   </span>
                 </div>
@@ -480,52 +480,52 @@ export default function App() {
                 <div
                   key={recipe.id}
                   onClick={() => setActiveRecipeModal(recipe)}
-                  className="bg-stone-900 border border-stone-800 rounded-2xl p-5 hover:border-amber-500/50 transition-all cursor-pointer flex flex-col justify-between group shadow-sm"
+                  className="bg-white border border-amber-200/70 rounded-2xl p-5 hover:border-orange-400 hover:shadow-lg transition-all cursor-pointer flex flex-col justify-between group shadow-sm"
                 >
                   <div>
                     <div className="flex flex-wrap items-center justify-between gap-1 mb-2">
                       <div className="flex items-center gap-1.5">
-                        <span className={`px-2 py-0.5 text-[10px] font-bold uppercase rounded ${
+                        <span className={`px-2 py-0.5 text-[10px] font-bold uppercase rounded-md ${
                           recipe.dietType === 'Vegetarian'
-                            ? 'bg-emerald-950 text-emerald-300 border border-emerald-800'
+                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
                             : recipe.dietType === 'Eggitarian'
-                            ? 'bg-amber-950 text-amber-300 border border-amber-800'
-                            : 'bg-rose-950 text-rose-300 border border-rose-800'
+                            ? 'bg-amber-100 text-amber-800 border border-amber-300'
+                            : 'bg-rose-100 text-rose-800 border border-rose-300'
                         }`}>
                           {recipe.dietType}
                         </span>
-                        <span className="px-2 py-0.5 text-[10px] font-semibold bg-amber-950 text-amber-300 border border-amber-800/60 rounded">
+                        <span className="px-2 py-0.5 text-[10px] font-semibold bg-orange-100 text-orange-800 border border-orange-200 rounded-md">
                           {recipe.cuisine}
                         </span>
                       </div>
-                      <span className="text-xs text-stone-400">
+                      <span className="text-xs text-stone-500 font-medium">
                         {recipe.prepTimeMins + recipe.cookTimeMins} mins
                       </span>
                     </div>
 
-                    <h3 className="text-base font-bold text-stone-100 group-hover:text-amber-400 transition-colors">
+                    <h3 className="text-base font-bold text-stone-800 group-hover:text-orange-600 transition-colors">
                       {recipe.title}
                     </h3>
-                    <p className="text-xs text-amber-400/80 font-medium mb-3">{recipe.hindiTitle}</p>
+                    <p className="text-xs text-orange-600 font-medium mb-3">{recipe.hindiTitle}</p>
 
-                    <div className="space-y-1.5 text-xs text-stone-300">
-                      <p className="line-clamp-2 text-stone-400">{recipe.ayurvedicNote}</p>
+                    <div className="space-y-1.5 text-xs text-stone-600">
+                      <p className="line-clamp-2">{recipe.ayurvedicNote}</p>
                     </div>
 
                     <div className="mt-3 flex flex-wrap gap-1">
                       {recipe.featuredVegetables.map((v, idx) => (
-                        <span key={idx} className="px-2 py-0.5 rounded bg-stone-950 border border-stone-800 text-[10px] text-stone-300">
+                        <span key={idx} className="px-2 py-0.5 rounded-md bg-amber-50 border border-amber-200 text-[10px] text-amber-900 font-medium">
                           {v}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-stone-800 flex items-center justify-between text-xs">
-                    <span className="font-mono text-stone-400">
-                      <strong className="text-stone-200">{recipe.calories}</strong> kcal • <strong className="text-emerald-400">{recipe.proteinGrams}g</strong> P
+                  <div className="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
+                    <span className="font-mono text-stone-500">
+                      <strong className="text-stone-800">{recipe.calories}</strong> kcal • <strong className="text-emerald-700">{recipe.proteinGrams}g</strong> P
                     </span>
-                    <span className="text-amber-400 font-semibold group-hover:translate-x-0.5 transition-transform flex items-center gap-1">
+                    <span className="text-orange-600 font-semibold group-hover:translate-x-0.5 transition-transform flex items-center gap-1">
                       View Recipe <ChevronRight className="w-3.5 h-3.5" />
                     </span>
                   </div>
@@ -534,15 +534,15 @@ export default function App() {
             </div>
 
             {filteredRecipes.length === 0 && (
-              <div className="text-center py-12 bg-stone-900/50 rounded-2xl border border-stone-800">
-                <p className="text-stone-400 text-sm">No recipes match your selected cuisine and dietary filters.</p>
+              <div className="text-center py-12 bg-white rounded-2xl border border-amber-200/80 shadow-sm">
+                <p className="text-stone-500 text-sm">No recipes match your selected cuisine and dietary filters.</p>
                 <button
                   onClick={() => {
                     setRecipeFilterCuisine('All Cuisines');
                     setRecipeFilterDiet('All');
                     setRecipeSearchQuery('');
                   }}
-                  className="mt-3 px-4 py-1.5 bg-stone-800 hover:bg-stone-700 text-stone-200 rounded-xl text-xs font-semibold cursor-pointer"
+                  className="mt-3 px-4 py-1.5 bg-orange-600 hover:bg-orange-700 text-white rounded-xl text-xs font-semibold cursor-pointer shadow"
                 >
                   Reset Filters
                 </button>
@@ -578,10 +578,10 @@ export default function App() {
       />
 
       {/* Footer */}
-      <footer className="border-t border-stone-900 bg-stone-950 py-6 text-center text-xs text-stone-500">
+      <footer className="border-t border-amber-200/60 bg-white/80 py-6 text-center text-xs text-stone-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>Season diet • Indian Seasonal Health & Regional Cuisine Meal Planning Architecture</span>
-          <span>Designed with Ayurvedic 6-Ritu Principles & Everyday Household Staples</span>
+          <span className="font-medium text-stone-600">Season diet • Indian Seasonal Health & Regional Cuisine Meal Planning</span>
+          <span>Designed with Ayurvedic 6-Ritu Principles & Household Staples</span>
         </div>
       </footer>
 

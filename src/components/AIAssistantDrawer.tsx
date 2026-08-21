@@ -114,20 +114,20 @@ export const AIAssistantDrawer: React.FC<AIAssistantDrawerProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end bg-stone-950/70 backdrop-blur-xs animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex justify-end bg-stone-900/50 backdrop-blur-xs animate-fadeIn">
       <div 
-        className="bg-stone-900 border-l border-stone-800 w-full max-w-lg h-full flex flex-col shadow-2xl overflow-hidden animate-slideInRight"
+        className="bg-white border-l border-stone-200 w-full max-w-lg h-full flex flex-col shadow-2xl overflow-hidden animate-slideInRight"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Drawer Header */}
-        <div className="p-4 sm:p-5 border-b border-stone-800 flex items-center justify-between bg-stone-900/90">
+        <div className="p-4 sm:p-5 border-b border-stone-100 flex items-center justify-between bg-gradient-to-r from-orange-50/80 via-amber-50/60 to-emerald-50/60">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center border border-amber-500/30">
+            <div className="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center border border-orange-200 shadow-2xs">
               <Sparkles className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-stone-100 font-serif">AI Ayurvedic Diet & Recipe Advisor</h2>
-              <p className="text-xs text-stone-400">
+              <h2 className="text-base font-bold text-stone-800 font-serif">AI Ayurvedic Diet & Recipe Advisor</h2>
+              <p className="text-xs text-stone-600 font-medium">
                 Personalized for {selectedState.name} • {activeRitu.key} Ritu
               </p>
             </div>
@@ -135,19 +135,19 @@ export const AIAssistantDrawer: React.FC<AIAssistantDrawerProps> = ({
 
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-stone-400 hover:text-stone-100 hover:bg-stone-800 transition-colors cursor-pointer"
+            className="p-2 rounded-xl text-stone-400 hover:text-stone-700 hover:bg-white/80 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Preset Prompt Chips */}
-        <div className="p-3 bg-stone-950/60 border-b border-stone-800/80 overflow-x-auto scrollbar-none flex gap-2">
+        <div className="p-3 bg-stone-50/80 border-b border-stone-200 overflow-x-auto scrollbar-none flex gap-2">
           {PRESET_PROMPTS.map((prompt, idx) => (
             <button
               key={idx}
               onClick={() => handleSendMessage(prompt)}
-              className="px-2.5 py-1 rounded-lg text-xs bg-stone-800/80 hover:bg-amber-500/20 text-stone-300 hover:text-amber-300 border border-stone-700/60 whitespace-nowrap transition-all cursor-pointer"
+              className="px-3 py-1.5 rounded-xl text-xs bg-white hover:bg-orange-50 text-stone-700 hover:text-orange-900 border border-stone-200 whitespace-nowrap transition-all cursor-pointer font-medium shadow-2xs"
             >
               {prompt}
             </button>
@@ -155,7 +155,7 @@ export const AIAssistantDrawer: React.FC<AIAssistantDrawerProps> = ({
         </div>
 
         {/* Message Stream */}
-        <div className="flex-1 p-4 overflow-y-auto space-y-4 text-sm">
+        <div className="flex-1 p-4 overflow-y-auto space-y-4 text-sm bg-gradient-to-b from-amber-50/20 to-white">
           {messages.map((msg) => {
             const isAssistant = msg.sender === 'assistant';
             return (
@@ -164,7 +164,7 @@ export const AIAssistantDrawer: React.FC<AIAssistantDrawerProps> = ({
                 className={`flex gap-3 ${isAssistant ? 'justify-start' : 'justify-end'}`}
               >
                 {isAssistant && (
-                  <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 mt-0.5 border border-amber-500/30">
+                  <div className="w-8 h-8 rounded-xl bg-orange-100 text-orange-700 flex items-center justify-center shrink-0 mt-0.5 border border-orange-200 shadow-2xs">
                     <Bot className="w-4 h-4" />
                   </div>
                 )}
@@ -172,15 +172,15 @@ export const AIAssistantDrawer: React.FC<AIAssistantDrawerProps> = ({
                 <div
                   className={`p-3.5 rounded-2xl max-w-[85%] text-xs sm:text-sm leading-relaxed ${
                     isAssistant
-                      ? 'bg-stone-950 border border-stone-800 text-stone-200 shadow-sm'
-                      : 'bg-amber-500 text-stone-950 font-medium'
+                      ? 'bg-white border border-stone-200 text-stone-800 shadow-2xs'
+                      : 'bg-gradient-to-r from-orange-600 to-amber-600 text-white font-medium shadow-xs'
                   }`}
                 >
                   <div className="whitespace-pre-wrap">{msg.text}</div>
                 </div>
 
                 {!isAssistant && (
-                  <div className="w-8 h-8 rounded-lg bg-stone-800 text-stone-300 flex items-center justify-center shrink-0 mt-0.5 border border-stone-700">
+                  <div className="w-8 h-8 rounded-xl bg-stone-100 text-stone-700 flex items-center justify-center shrink-0 mt-0.5 border border-stone-200">
                     <User className="w-4 h-4" />
                   </div>
                 )}
@@ -189,8 +189,8 @@ export const AIAssistantDrawer: React.FC<AIAssistantDrawerProps> = ({
           })}
 
           {isLoading && (
-            <div className="flex gap-3 justify-start items-center text-xs text-stone-400">
-              <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+            <div className="flex gap-3 justify-start items-center text-xs text-stone-600 font-medium">
+              <div className="w-8 h-8 rounded-xl bg-orange-100 text-orange-700 flex items-center justify-center shrink-0 border border-orange-200">
                 <Loader2 className="w-4 h-4 animate-spin" />
               </div>
               <span>Consulting Ayurvedic seasonality guidelines for {selectedState.name}...</span>
@@ -199,7 +199,7 @@ export const AIAssistantDrawer: React.FC<AIAssistantDrawerProps> = ({
         </div>
 
         {/* Input Bar */}
-        <div className="p-4 border-t border-stone-800 bg-stone-900/90">
+        <div className="p-4 border-t border-stone-200 bg-white">
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -212,12 +212,12 @@ export const AIAssistantDrawer: React.FC<AIAssistantDrawerProps> = ({
               placeholder="Ask about seasonal vegetables, diet adjustments, or recipe steps..."
               value={inputQuery}
               onChange={(e) => setInputQuery(e.target.value)}
-              className="flex-1 bg-stone-950 border border-stone-700 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-stone-100 placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="flex-1 bg-stone-50 border border-stone-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
             />
             <button
               type="submit"
               disabled={isLoading || !inputQuery.trim()}
-              className="p-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-stone-950 font-bold transition-all cursor-pointer"
+              className="p-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 disabled:opacity-40 text-white font-bold transition-all cursor-pointer shadow-xs"
             >
               <Send className="w-4 h-4" />
             </button>

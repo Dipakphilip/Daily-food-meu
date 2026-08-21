@@ -17,7 +17,7 @@ interface HeaderProps {
   selectedState: IndianState;
   activeRitu: AyurvedicRitu;
   weather: WeatherContext;
-  onOpenAi: () => void;
+  onOpenAi?: () => void;
   groceryCount: number;
 }
 
@@ -27,84 +27,83 @@ export const Header: React.FC<HeaderProps> = ({
   selectedState,
   activeRitu,
   weather,
-  onOpenAi,
   groceryCount
 }) => {
   return (
-    <header className="sticky top-0 z-30 bg-stone-900 text-stone-100 border-b border-stone-800 shadow-md">
+    <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md text-stone-800 border-b border-amber-200/80 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20 gap-3 sm:gap-4">
+        <div className="flex items-center justify-between h-16 gap-4">
           
           {/* Brand & Logo */}
           <div className="flex items-center gap-3 cursor-pointer shrink-0" onClick={() => setActiveTab('planner')}>
-            <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 font-serif font-bold text-xl shadow-inner">
-              🥗
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-orange-500 to-rose-500 flex items-center justify-center text-lg shadow-md text-white">
+              🌿
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-lg sm:text-xl font-bold tracking-tight text-amber-400 font-serif">Season diet</span>
-                <span className="hidden sm:inline-block px-2 py-0.5 text-xs font-medium rounded-full bg-emerald-950 text-emerald-300 border border-emerald-800/60">
+                <span className="text-lg sm:text-xl font-bold tracking-tight bg-gradient-to-r from-orange-600 via-amber-600 to-emerald-700 bg-clip-text text-transparent font-serif">
+                  Season diet
+                </span>
+                <span className="text-[11px] font-bold text-emerald-800 px-2 py-0.5 rounded-full bg-emerald-100 border border-emerald-300">
                   {activeRitu.key} Ritu
                 </span>
               </div>
-              <p className="text-xs text-stone-400 hidden sm:block">Indian Seasonal Health & Regional Meal Planner</p>
+              <p className="text-[11px] text-stone-500 font-medium hidden sm:block">
+                Indian Seasonal Health & Regional Cuisine Architecture
+              </p>
             </div>
           </div>
 
           {/* Environmental Context Quick Badges */}
-          <div className="hidden xl:flex items-center gap-2 text-xs bg-stone-800/80 px-3 py-1.5 rounded-lg border border-stone-700">
-            <div className="flex items-center gap-1.5 text-stone-300 pr-2 border-r border-stone-700">
-              <MapPin className="w-3.5 h-3.5 text-amber-400" />
-              <span className="font-semibold text-stone-200">{selectedState.name}</span>
-              <span className="text-stone-400">({selectedState.zone})</span>
+          <div className="hidden lg:flex items-center gap-3 text-xs">
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-orange-50 border border-orange-200 text-orange-800 font-medium">
+              <MapPin className="w-3.5 h-3.5 text-orange-600" />
+              <span>{selectedState.name}</span>
+              <span className="text-orange-500">({selectedState.zone})</span>
             </div>
-            <div className="flex items-center gap-1.5 text-stone-300 pr-2 border-r border-stone-700">
-              <SunMedium className="w-3.5 h-3.5 text-amber-400" />
-              <span>{weather.condition}</span>
-              <span className="text-amber-300 font-medium">{weather.temperatureC}°C</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-emerald-400">
-              <Flame className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Agni: {activeRitu.key === 'Hemanta' || activeRitu.key === 'Shishira' ? 'Strong' : activeRitu.key === 'Varsha' ? 'Sensitive' : 'Moderate'}</span>
-            </div>
-          </div>
 
-          {/* Right Section / Status */}
-          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-sky-50 border border-sky-200 text-sky-800 font-medium">
+              <SunMedium className="w-3.5 h-3.5 text-sky-600" />
+              <span>{weather.condition}</span>
+              <span className="font-bold text-sky-900">{weather.temperatureC}°C</span>
+            </div>
+
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 font-medium">
+              <Flame className="w-3.5 h-3.5 text-amber-600" />
+              <span>Agni: <strong>{activeRitu.key === 'Hemanta' || activeRitu.key === 'Shishira' ? 'Strong' : activeRitu.key === 'Varsha' ? 'Sensitive' : 'Moderate'}</strong></span>
+            </div>
           </div>
         </div>
 
-          {/* Navigation Tabs */}
-        <div className="flex items-center gap-1 sm:gap-2 overflow-x-auto py-2.5 border-t border-stone-800 scrollbar-none text-xs sm:text-sm">
+        {/* Navigation Tabs */}
+        <div className="flex items-center gap-1.5 overflow-x-auto py-2 border-t border-stone-100 scrollbar-none text-xs sm:text-sm">
           <button
             id="nav-tab-planner"
             onClick={() => setActiveTab('planner')}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg font-medium whitespace-nowrap transition-all cursor-pointer ${
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl font-semibold whitespace-nowrap transition-all cursor-pointer ${
               activeTab === 'planner'
-                ? 'bg-amber-500 text-stone-950 font-semibold shadow'
-                : 'text-stone-300 hover:text-stone-100 hover:bg-stone-800/60'
+                ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-sm'
+                : 'text-stone-600 hover:text-stone-900 hover:bg-orange-50/70'
             }`}
           >
-            <CalendarDays className="w-4 h-4" />
+            <CalendarDays className="w-3.5 h-3.5" />
             <span>Weekly Meal Plan</span>
           </button>
 
           <button
             id="nav-tab-grocery"
             onClick={() => setActiveTab('grocery')}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg font-medium whitespace-nowrap transition-all cursor-pointer relative ${
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl font-semibold whitespace-nowrap transition-all cursor-pointer relative ${
               activeTab === 'grocery'
-                ? 'bg-amber-500 text-stone-950 font-semibold shadow'
-                : 'text-stone-300 hover:text-stone-100 hover:bg-stone-800/60'
+                ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-sm'
+                : 'text-stone-600 hover:text-stone-900 hover:bg-emerald-50/70'
             }`}
           >
-            <ShoppingCart className="w-4 h-4" />
+            <ShoppingCart className="w-3.5 h-3.5" />
             <span>Weekly Grocery</span>
             {groceryCount > 0 && (
-              <span className={`px-1.5 py-0.2 text-[10px] font-bold rounded-full ${
-                activeTab === 'grocery'
-                  ? 'bg-stone-950 text-amber-400'
-                  : 'bg-emerald-500 text-stone-950'
+              <span className={`px-1.5 py-0.2 text-[10px] font-bold rounded-md font-mono ${
+                activeTab === 'grocery' ? 'bg-white text-emerald-800' : 'bg-emerald-100 text-emerald-800'
               }`}>
                 {groceryCount}
               </span>
@@ -114,40 +113,40 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             id="nav-tab-seasonality"
             onClick={() => setActiveTab('seasonality')}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg font-medium whitespace-nowrap transition-all cursor-pointer ${
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl font-semibold whitespace-nowrap transition-all cursor-pointer ${
               activeTab === 'seasonality'
-                ? 'bg-amber-500 text-stone-950 font-semibold shadow'
-                : 'text-stone-300 hover:text-stone-100 hover:bg-stone-800/60'
+                ? 'bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-sm'
+                : 'text-stone-600 hover:text-stone-900 hover:bg-teal-50/70'
             }`}
           >
-            <Sprout className="w-4 h-4" />
+            <Sprout className="w-3.5 h-3.5" />
             <span>Seasonal Produce</span>
           </button>
 
           <button
             id="nav-tab-recipes"
             onClick={() => setActiveTab('recipes')}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg font-medium whitespace-nowrap transition-all cursor-pointer ${
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl font-semibold whitespace-nowrap transition-all cursor-pointer ${
               activeTab === 'recipes'
-                ? 'bg-amber-500 text-stone-950 font-semibold shadow'
-                : 'text-stone-300 hover:text-stone-100 hover:bg-stone-800/60'
+                ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-sm'
+                : 'text-stone-600 hover:text-stone-900 hover:bg-amber-50/70'
             }`}
           >
-            <ChefHat className="w-4 h-4" />
+            <ChefHat className="w-3.5 h-3.5" />
             <span>Everyday Recipes</span>
           </button>
 
           <button
             id="nav-tab-blueprint"
             onClick={() => setActiveTab('blueprint')}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg font-medium whitespace-nowrap transition-all cursor-pointer ${
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl font-semibold whitespace-nowrap transition-all cursor-pointer ${
               activeTab === 'blueprint'
-                ? 'bg-amber-500 text-stone-950 font-semibold shadow'
-                : 'text-stone-300 hover:text-stone-100 hover:bg-stone-800/60'
+                ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-sm'
+                : 'text-stone-600 hover:text-stone-900 hover:bg-purple-50/70'
             }`}
           >
-            <FileText className="w-4 h-4" />
-            <span>PM Blueprint & Architecture</span>
+            <FileText className="w-3.5 h-3.5" />
+            <span>PM Blueprint</span>
           </button>
         </div>
       </div>

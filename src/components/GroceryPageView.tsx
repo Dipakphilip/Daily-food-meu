@@ -215,85 +215,79 @@ export const GroceryPageView: React.FC<GroceryPageViewProps> = ({
       )}
 
       {/* 1. Header Banner */}
-      <div className="bg-stone-900 border border-stone-800 rounded-2xl p-5 sm:p-6 mb-6 shadow-sm">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+      <div className="bg-gradient-to-br from-emerald-50 via-amber-50/50 to-orange-50 border border-emerald-200 rounded-2xl p-5 mb-5 shadow-sm">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
-            <div className="flex items-center gap-2 text-xs font-semibold text-amber-400 uppercase tracking-wider mb-1">
-              <ShoppingCart className="w-4 h-4 text-emerald-400" />
-              <span>Comprehensive 7-Day Grocery & Mandi Architecture</span>
+            <div className="flex items-center gap-2 text-[11px] font-bold text-emerald-800 uppercase tracking-wider mb-1">
+              <ShoppingCart className="w-3.5 h-3.5 text-emerald-600" />
+              <span>7-Day Grocery Checklist</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-stone-100 font-serif">
-              Weekly Ingredients & Market Checklist
+            <h1 className="text-xl sm:text-2xl font-bold text-stone-800 font-serif">
+              Weekly Ingredients & Market List
             </h1>
-            <p className="text-sm text-stone-400 mt-1 max-w-3xl leading-relaxed">
-              Every single ingredient required to cook all 28 weekly meals (Breakfast, Lunch, Evening Snack & Dinner) tailored for <strong className="text-stone-200">{selectedState.name}</strong> ({selectedCuisines.join(', ')}) during <strong className="text-emerald-400">{activeRitu.key} Ritu</strong>.
+            <p className="text-xs text-stone-600 mt-1 max-w-2xl leading-relaxed font-medium">
+              Ingredient quantities for 28 weekly meals for <span className="text-orange-950 font-bold">{selectedState.name}</span> during <span className="text-emerald-950 font-bold">{activeRitu.key} Ritu</span>.
             </p>
           </div>
 
           {/* Action CTAs */}
-          <div className="flex flex-wrap items-center gap-2.5">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={handleExportWhatsApp}
-              className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-all cursor-pointer"
             >
-              <Share2 className="w-4 h-4" />
-              <span>Share to WhatsApp</span>
+              <Share2 className="w-3.5 h-3.5" />
+              <span>Share</span>
             </button>
 
             <button
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700 transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-white hover:bg-stone-100 text-stone-700 border border-stone-200 transition-colors cursor-pointer"
             >
-              <Printer className="w-4 h-4" />
-              <span className="hidden sm:inline">Print Mandi Sheet</span>
+              <Printer className="w-3.5 h-3.5 text-stone-500" />
+              <span className="hidden sm:inline">Print</span>
             </button>
 
             <button
               onClick={onNavigateToPlanner}
-              className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-stone-950 hover:bg-stone-800 text-stone-300 border border-stone-800 transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-orange-50 hover:bg-orange-100 text-orange-800 border border-orange-200 transition-colors cursor-pointer"
             >
-              <CalendarDays className="w-4 h-4 text-amber-400" />
-              <span>View Meal Plan</span>
+              <CalendarDays className="w-3.5 h-3.5 text-orange-600" />
+              <span>Meal Plan</span>
             </button>
           </div>
         </div>
 
         {/* 2. Scaler: Number of People / Family Members Control */}
-        <div className="mt-6 pt-5 border-t border-stone-800 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-stone-950/60 p-4 rounded-xl border border-stone-800/80">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
-              <Users className="w-5 h-5" />
-            </div>
+        <div className="mt-4 pt-4 border-t border-emerald-200/80 flex flex-col md:flex-row md:items-center justify-between gap-3 bg-white/80 p-3.5 rounded-xl border border-emerald-100">
+          <div className="flex items-center gap-2.5">
+            <Users className="w-4 h-4 text-emerald-700 shrink-0" />
             <div>
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-bold text-stone-200">Scale for Family Size:</span>
-                <span className="text-xs px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800 font-mono font-bold">
+              <div className="flex items-center gap-2 text-xs">
+                <span className="text-stone-700 font-bold">Household Scale:</span>
+                <span className="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-900 border border-emerald-200 font-mono font-bold text-[11px]">
                   {peopleCount} {peopleCount === 1 ? 'Person' : 'People'}
                 </span>
-                <span className="text-xs text-stone-500">
-                  (×{(peopleCount / 2).toFixed(1)} base recipe ratio)
+                <span className="text-stone-500 text-[11px]">
+                  (×{(peopleCount / 2).toFixed(1)} ratio)
                 </span>
               </div>
-              <p className="text-xs text-stone-400 mt-0.5">
-                Quantities across all 7 days automatically scale mathematically for your household.
-              </p>
             </div>
           </div>
 
           {/* Stepper and Presets */}
           <div className="flex flex-wrap items-center gap-2">
-            {/* Interactive Stepper */}
-            <div className="flex items-center bg-stone-900 border border-stone-700 rounded-xl p-1">
+            <div className="flex items-center bg-stone-50 border border-stone-200 rounded-lg p-0.5">
               <button
                 onClick={() => handleUpdatePeople(-1)}
                 disabled={peopleCount <= 1}
                 title="Decrease people"
-                className="w-8 h-8 rounded-lg flex items-center justify-center text-stone-300 hover:bg-stone-800 disabled:opacity-30 transition-all cursor-pointer"
+                className="w-6 h-6 rounded flex items-center justify-center text-stone-600 hover:bg-stone-200 disabled:opacity-30 transition-colors cursor-pointer text-xs"
               >
-                <Minus className="w-4 h-4" />
+                <Minus className="w-3.5 h-3.5" />
               </button>
 
-              <span className="w-12 text-center font-mono font-bold text-sm text-stone-100">
+              <span className="w-8 text-center font-mono font-bold text-xs text-stone-800">
                 {peopleCount}
               </span>
 
@@ -301,9 +295,9 @@ export const GroceryPageView: React.FC<GroceryPageViewProps> = ({
                 onClick={() => handleUpdatePeople(1)}
                 disabled={peopleCount >= 20}
                 title="Increase people"
-                className="w-8 h-8 rounded-lg flex items-center justify-center text-stone-300 hover:bg-stone-800 disabled:opacity-30 transition-all cursor-pointer"
+                className="w-6 h-6 rounded flex items-center justify-center text-stone-600 hover:bg-stone-200 disabled:opacity-30 transition-colors cursor-pointer text-xs"
               >
-                <Plus className="w-4 h-4" />
+                <Plus className="w-3.5 h-3.5" />
               </button>
             </div>
 
@@ -313,10 +307,10 @@ export const GroceryPageView: React.FC<GroceryPageViewProps> = ({
                 <button
                   key={preset.count}
                   onClick={() => onUpdatePeopleCount(preset.count)}
-                  className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer border ${
+                  className={`px-2 py-1 rounded-lg text-[11px] font-semibold transition-colors cursor-pointer border ${
                     peopleCount === preset.count
-                      ? 'bg-amber-500 text-stone-950 border-amber-400 font-bold shadow'
-                      : 'bg-stone-900 text-stone-400 border-stone-800 hover:text-stone-200'
+                      ? 'bg-emerald-600 text-white border-emerald-600'
+                      : 'bg-white text-stone-600 border-stone-200 hover:bg-stone-50'
                   }`}
                 >
                   {preset.count}p
@@ -327,33 +321,33 @@ export const GroceryPageView: React.FC<GroceryPageViewProps> = ({
         </div>
 
         {/* 3. Progress Bar & Checklist Quick Actions */}
-        <div className="mt-4 pt-4 border-t border-stone-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div className="mt-3 pt-3 border-t border-emerald-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-3 flex-1 max-w-md">
-            <div className="flex-1 bg-stone-950 rounded-full h-2.5 overflow-hidden border border-stone-800">
+            <div className="flex-1 bg-stone-200 rounded-full h-2 overflow-hidden border border-stone-300">
               <div 
-                className="bg-gradient-to-r from-amber-500 to-emerald-500 h-full transition-all duration-300"
+                className="bg-emerald-500 h-full transition-all duration-300 rounded-full"
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
-            <span className="font-mono text-stone-300 font-semibold shrink-0">
-              {checkedItemsCount} / {totalItemsCount} ({progressPercent}%)
+            <span className="font-mono text-stone-600 font-bold text-[11px] shrink-0">
+              {checkedItemsCount}/{totalItemsCount} ({progressPercent}%)
             </span>
           </div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={handleMarkAllPantryStaples}
-              className="px-3 py-1 bg-stone-950 hover:bg-stone-800 border border-stone-800 text-stone-300 rounded-lg text-xs transition-colors cursor-pointer flex items-center gap-1.5"
+              className="px-2.5 py-1 bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 rounded-lg text-[11px] font-medium transition-colors cursor-pointer flex items-center gap-1 shadow-2xs"
             >
-              <CheckSquare className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Mark Staples in Stock</span>
+              <CheckSquare className="w-3 h-3 text-emerald-600" />
+              <span>Mark Staples Stocked</span>
             </button>
 
             <button
               onClick={handleResetChecklist}
-              className="px-3 py-1 bg-stone-950 hover:bg-stone-800 border border-stone-800 text-stone-400 hover:text-stone-200 rounded-lg text-xs transition-colors cursor-pointer flex items-center gap-1.5"
+              className="px-2.5 py-1 bg-white hover:bg-stone-50 border border-stone-200 text-stone-600 rounded-lg text-[11px] font-medium transition-colors cursor-pointer flex items-center gap-1 shadow-2xs"
             >
-              <RotateCcw className="w-3.5 h-3.5" />
+              <RotateCcw className="w-3 h-3 text-stone-400" />
               <span>Reset</span>
             </button>
           </div>
@@ -361,34 +355,31 @@ export const GroceryPageView: React.FC<GroceryPageViewProps> = ({
       </div>
 
       {/* 4. Search and Filter Bar */}
-      <div className="bg-stone-900 border border-stone-800 rounded-2xl p-4 mb-6 shadow-sm space-y-3">
+      <div className="bg-white border border-amber-200/80 rounded-2xl p-4 mb-5 space-y-3 shadow-sm">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
           
           {/* Search Box */}
           <div className="relative flex-1 max-w-md">
-            <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-3.5 h-3.5 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search ingredient (e.g. Lauki, Atta, Ghee, Mustard oil)..."
-              className="w-full pl-10 pr-4 py-2 bg-stone-950 border border-stone-800 rounded-xl text-xs sm:text-sm text-stone-200 placeholder-stone-500 focus:outline-none focus:border-amber-500"
+              placeholder="Search ingredients..."
+              className="w-full pl-9 pr-3 py-1.5 bg-stone-50 border border-stone-200 rounded-xl text-xs text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-emerald-400"
             />
           </div>
 
           {/* Status Filter */}
-          <div className="flex items-center gap-1.5 self-start md:self-auto">
-            <span className="text-xs text-stone-400 font-semibold uppercase tracking-wider mr-1 flex items-center gap-1">
-              <Filter className="w-3 h-3" /> Status:
-            </span>
+          <div className="flex items-center gap-1">
             {(['all', 'pending', 'checked'] as const).map(status => (
               <button
                 key={status}
                 onClick={() => setStatusFilter(status)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer border ${
+                className={`px-3 py-1 rounded-xl text-xs font-semibold transition-colors cursor-pointer border ${
                   statusFilter === status
-                    ? 'bg-amber-500 text-stone-950 border-amber-400'
-                    : 'bg-stone-950 text-stone-400 border-stone-800 hover:text-stone-200'
+                    ? 'bg-orange-600 text-white border-orange-600 shadow-2xs'
+                    : 'bg-stone-50 text-stone-600 border-stone-200 hover:bg-stone-100'
                 }`}
               >
                 {status === 'all' ? 'All Items' : status === 'pending' ? 'Need to Buy' : 'In Stock'}
@@ -398,63 +389,63 @@ export const GroceryPageView: React.FC<GroceryPageViewProps> = ({
         </div>
 
         {/* Category Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 pt-1 border-t border-stone-800/80 scrollbar-none">
+        <div className="flex items-center gap-1.5 overflow-x-auto pt-2 border-t border-stone-100 scrollbar-none text-xs">
           <button
             onClick={() => setSelectedCategoryTab('all')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer border ${
+            className={`px-3 py-1 rounded-xl font-semibold whitespace-nowrap transition-colors cursor-pointer border ${
               selectedCategoryTab === 'all'
-                ? 'bg-stone-100 text-stone-950 border-white'
-                : 'bg-stone-950 text-stone-400 border-stone-800 hover:text-stone-200'
+                ? 'bg-stone-800 text-white border-stone-800'
+                : 'bg-stone-50 text-stone-600 border-stone-200 hover:bg-stone-100'
             }`}
           >
-            All Categories ({totalItemsCount})
+            All ({totalItemsCount})
           </button>
 
           <button
             onClick={() => setSelectedCategoryTab('produce')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer border ${
+            className={`flex items-center gap-1 px-3 py-1 rounded-xl font-semibold whitespace-nowrap transition-colors cursor-pointer border ${
               selectedCategoryTab === 'produce'
-                ? 'bg-emerald-600 text-white border-emerald-500 shadow'
-                : 'bg-stone-950 text-emerald-400 border-stone-800 hover:bg-stone-900'
+                ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
+                : 'bg-emerald-50/60 text-emerald-800 border-emerald-200 hover:bg-emerald-100'
             }`}
           >
-            <Sprout className="w-3.5 h-3.5" />
-            <span>Fresh Produce ({categorizedData.produce.length})</span>
+            <Sprout className="w-3 h-3 text-emerald-600" />
+            <span>Produce ({categorizedData.produce.length})</span>
           </button>
 
           <button
             onClick={() => setSelectedCategoryTab('grains_dals')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer border ${
+            className={`flex items-center gap-1 px-3 py-1 rounded-xl font-semibold whitespace-nowrap transition-colors cursor-pointer border ${
               selectedCategoryTab === 'grains_dals'
-                ? 'bg-amber-600 text-white border-amber-500 shadow'
-                : 'bg-stone-950 text-amber-400 border-stone-800 hover:bg-stone-900'
+                ? 'bg-amber-600 text-white border-amber-600 shadow-2xs'
+                : 'bg-amber-50/60 text-amber-800 border-amber-200 hover:bg-amber-100'
             }`}
           >
-            <Layers className="w-3.5 h-3.5" />
+            <Layers className="w-3 h-3 text-amber-600" />
             <span>Grains & Dals ({categorizedData.grainsDals.length})</span>
           </button>
 
           <button
             onClick={() => setSelectedCategoryTab('dairy_protein')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer border ${
+            className={`flex items-center gap-1 px-3 py-1 rounded-xl font-semibold whitespace-nowrap transition-colors cursor-pointer border ${
               selectedCategoryTab === 'dairy_protein'
-                ? 'bg-cyan-600 text-white border-cyan-500 shadow'
-                : 'bg-stone-950 text-cyan-400 border-stone-800 hover:bg-stone-900'
+                ? 'bg-sky-600 text-white border-sky-600 shadow-2xs'
+                : 'bg-sky-50/60 text-sky-800 border-sky-200 hover:bg-sky-100'
             }`}
           >
-            <Egg className="w-3.5 h-3.5" />
+            <Egg className="w-3 h-3 text-sky-600" />
             <span>Dairy & Proteins ({categorizedData.dairyProtein.length})</span>
           </button>
 
           <button
             onClick={() => setSelectedCategoryTab('spices_oils')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer border ${
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-xl font-semibold whitespace-nowrap transition-all cursor-pointer border ${
               selectedCategoryTab === 'spices_oils'
-                ? 'bg-orange-600 text-white border-orange-500 shadow'
-                : 'bg-stone-950 text-orange-400 border-stone-800 hover:bg-stone-900'
+                ? 'bg-orange-600 text-white border-orange-600 shadow-2xs'
+                : 'bg-orange-50/60 text-orange-800 border-orange-200 hover:bg-orange-100'
             }`}
           >
-            <Flame className="w-3.5 h-3.5" />
+            <Flame className="w-3.5 h-3.5 text-orange-600" />
             <span>Spices & Oils ({categorizedData.spicesOils.length})</span>
           </button>
         </div>
@@ -468,8 +459,8 @@ export const GroceryPageView: React.FC<GroceryPageViewProps> = ({
           <IngredientCategorySection
             title="Fresh Seasonal Vegetables, Greens & Herbs"
             subtitle="Local mandi produce at seasonal nutritional peak"
-            icon={<Sprout className="w-5 h-5 text-emerald-400" />}
-            badgeColor="bg-emerald-950 text-emerald-300 border-emerald-800"
+            icon={<Sprout className="w-5 h-5 text-emerald-600" />}
+            badgeColor="bg-emerald-100 text-emerald-800 border-emerald-200"
             items={filteredProduce}
             checkedItems={checkedItems}
             onToggleCheck={toggleCheck}
@@ -487,8 +478,8 @@ export const GroceryPageView: React.FC<GroceryPageViewProps> = ({
           <IngredientCategorySection
             title="Dals, Pulses, Grains & Flours"
             subtitle="Primary sources of slow-carb energy, dietary fiber & plant protein"
-            icon={<Layers className="w-5 h-5 text-amber-400" />}
-            badgeColor="bg-amber-950 text-amber-300 border-amber-800"
+            icon={<Layers className="w-5 h-5 text-amber-600" />}
+            badgeColor="bg-amber-100 text-amber-800 border-amber-200"
             items={filteredGrains}
             checkedItems={checkedItems}
             onToggleCheck={toggleCheck}
@@ -503,8 +494,8 @@ export const GroceryPageView: React.FC<GroceryPageViewProps> = ({
           <IngredientCategorySection
             title="Dairy, Eggs & Fresh Proteins"
             subtitle="Fresh daily essentials and protein foundations"
-            icon={<Egg className="w-5 h-5 text-cyan-400" />}
-            badgeColor="bg-cyan-950 text-cyan-300 border-cyan-800"
+            icon={<Egg className="w-5 h-5 text-sky-600" />}
+            badgeColor="bg-sky-100 text-sky-800 border-sky-200"
             items={filteredDairy}
             checkedItems={checkedItems}
             onToggleCheck={toggleCheck}
@@ -519,8 +510,8 @@ export const GroceryPageView: React.FC<GroceryPageViewProps> = ({
           <IngredientCategorySection
             title="Pantry Spices, Cold-Pressed Oils & Seasonings"
             subtitle="Ayurvedic Agni igniters, digestive herbs, and traditional cooking fats"
-            icon={<Flame className="w-5 h-5 text-orange-400" />}
-            badgeColor="bg-orange-950 text-orange-300 border-orange-800"
+            icon={<Flame className="w-5 h-5 text-orange-600" />}
+            badgeColor="bg-orange-100 text-orange-800 border-orange-200"
             items={filteredSpices}
             checkedItems={checkedItems}
             onToggleCheck={toggleCheck}
@@ -532,10 +523,10 @@ export const GroceryPageView: React.FC<GroceryPageViewProps> = ({
 
         {/* Empty State */}
         {totalVisibleItems === 0 && (
-          <div className="bg-stone-900/60 border border-stone-800 rounded-2xl p-12 text-center">
-            <ShoppingCart className="w-10 h-10 text-stone-600 mx-auto mb-3" />
-            <h3 className="text-base font-bold text-stone-200">No ingredients match your filter</h3>
-            <p className="text-xs text-stone-400 mt-1 max-w-sm mx-auto">
+          <div className="bg-white border border-stone-200 rounded-2xl p-12 text-center shadow-sm">
+            <ShoppingCart className="w-10 h-10 text-stone-400 mx-auto mb-3" />
+            <h3 className="text-base font-bold text-stone-800">No ingredients match your filter</h3>
+            <p className="text-xs text-stone-500 mt-1 max-w-sm mx-auto">
               Try adjusting your search query or reset status filters to view the full 7-day grocery list.
             </p>
             <button
@@ -544,7 +535,7 @@ export const GroceryPageView: React.FC<GroceryPageViewProps> = ({
                 setStatusFilter('all');
                 setSelectedCategoryTab('all');
               }}
-              className="mt-4 px-4 py-2 bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-semibold rounded-xl cursor-pointer"
+              className="mt-4 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-xl cursor-pointer shadow-sm"
             >
               Reset All Filters
             </button>
@@ -554,16 +545,16 @@ export const GroceryPageView: React.FC<GroceryPageViewProps> = ({
       </div>
 
       {/* 6. Footer Ayurvedic Pantry Guidance Note */}
-      <div className="mt-10 p-5 bg-gradient-to-r from-stone-900 to-amber-950/40 border border-amber-500/20 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="mt-10 p-5 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
             <Sparkles className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-stone-100">
+            <h4 className="text-sm font-bold text-stone-800">
               Seasonal Buying & Storage Tip for {activeRitu.key} Ritu
             </h4>
-            <p className="text-xs text-stone-400 mt-0.5">
+            <p className="text-xs text-stone-600 mt-0.5">
               In {selectedState.name}, prioritize purchasing fresh leafy greens twice a week rather than bulk storing to preserve vital Prana and micronutrients.
             </p>
           </div>
@@ -571,7 +562,7 @@ export const GroceryPageView: React.FC<GroceryPageViewProps> = ({
 
         <button
           onClick={() => onOpenAiAdvisor(`Give me expert Ayurvedic kitchen tips on how to inspect, wash, and safely prep seasonal ingredients for a family of ${peopleCount} during ${activeRitu.key} season in ${selectedState.name}.`)}
-          className="px-3.5 py-2 bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs rounded-xl transition-colors cursor-pointer shrink-0"
+          className="px-3.5 py-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-xs rounded-xl shadow-xs transition-all cursor-pointer shrink-0"
         >
           Ask AI Storage Advice
         </button>
@@ -610,21 +601,21 @@ const IngredientCategorySection: React.FC<IngredientCategorySectionProps> = ({
   onAskAiForProduce
 }) => {
   return (
-    <div className="bg-stone-900 border border-stone-800 rounded-2xl p-5 shadow-sm">
+    <div className="bg-white border border-stone-200/90 rounded-2xl p-5 shadow-sm">
       {/* Section Header */}
-      <div className="flex items-center justify-between pb-3 border-b border-stone-800 mb-4">
+      <div className="flex items-center justify-between pb-3 border-b border-stone-100 mb-4">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-xl bg-stone-950 border border-stone-800">
+          <div className="p-2 rounded-xl bg-stone-50 border border-stone-200">
             {icon}
           </div>
           <div>
-            <h2 className="text-base font-bold text-stone-100 font-serif flex items-center gap-2">
+            <h2 className="text-base font-bold text-stone-800 font-serif flex items-center gap-2">
               {title}
-              <span className={`text-[11px] font-mono px-2 py-0.5 rounded-full border ${badgeColor}`}>
+              <span className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded-full border ${badgeColor}`}>
                 {items.length} items
               </span>
             </h2>
-            <p className="text-xs text-stone-400">{subtitle}</p>
+            <p className="text-xs text-stone-500">{subtitle}</p>
           </div>
         </div>
       </div>
@@ -641,33 +632,33 @@ const IngredientCategorySection: React.FC<IngredientCategorySectionProps> = ({
               onClick={() => onToggleCheck(item.id)}
               className={`p-3.5 rounded-xl border transition-all cursor-pointer flex flex-col justify-between group ${
                 isChecked
-                  ? 'bg-stone-950/40 border-stone-800/60 opacity-60'
-                  : 'bg-stone-950 border-stone-800 hover:border-amber-500/50 hover:bg-stone-950/90 shadow-sm'
+                  ? 'bg-stone-50/70 border-stone-200 opacity-60'
+                  : 'bg-stone-50/40 border-stone-200 hover:border-orange-300 hover:bg-orange-50/20 shadow-2xs'
               }`}
             >
               <div>
                 {/* Top Row: Checkbox, Name, and Scaled Quantity */}
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-start gap-2.5">
-                    <div className={`mt-0.5 w-5 h-5 rounded-lg border flex items-center justify-center transition-colors shrink-0 ${
+                    <div className={`mt-0.5 w-5 h-5 rounded-md border flex items-center justify-center transition-colors shrink-0 ${
                       isChecked
-                        ? 'bg-emerald-500 border-emerald-400 text-stone-950'
-                        : 'border-stone-700 group-hover:border-amber-500 bg-stone-900'
+                        ? 'bg-emerald-600 border-emerald-600 text-white'
+                        : 'border-stone-300 group-hover:border-orange-400 bg-white'
                     }`}>
                       {isChecked && <Check className="w-3.5 h-3.5 stroke-[3]" />}
                     </div>
 
                     <div>
                       <h4 className={`text-xs sm:text-sm font-bold transition-colors ${
-                        isChecked ? 'line-through text-stone-400' : 'text-stone-200 group-hover:text-amber-400'
+                        isChecked ? 'line-through text-stone-400' : 'text-stone-800 group-hover:text-orange-700'
                       }`}>
                         {item.name}
                       </h4>
                       <div className="flex items-center gap-1.5 mt-1">
-                        <span className={`text-[10px] px-1.5 py-0.2 rounded font-medium ${
+                        <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-semibold ${
                           item.isStaple
-                            ? 'bg-stone-900 text-stone-400 border border-stone-800'
-                            : 'bg-emerald-950 text-emerald-300 border border-emerald-800/60'
+                            ? 'bg-stone-100 text-stone-600 border border-stone-200'
+                            : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                         }`}>
                           {item.isStaple ? 'Pantry Staple' : 'Fresh Buy'}
                         </span>
@@ -677,7 +668,7 @@ const IngredientCategorySection: React.FC<IngredientCategorySectionProps> = ({
 
                   {/* Scaled Quantity Highlight Badge */}
                   <div className="text-right shrink-0">
-                    <span className="inline-block px-2.5 py-1 rounded-lg bg-amber-500/10 text-amber-300 border border-amber-500/30 text-xs sm:text-sm font-mono font-bold shadow-inner">
+                    <span className="inline-block px-2.5 py-1 rounded-lg bg-orange-100 text-orange-900 border border-orange-200 text-xs sm:text-sm font-mono font-bold shadow-2xs">
                       {item.scaledQuantity}
                     </span>
                     <div className="text-[10px] text-stone-500 mt-0.5 font-mono">
@@ -689,15 +680,15 @@ const IngredientCategorySection: React.FC<IngredientCategorySectionProps> = ({
 
               {/* Bottom Row: Used in Meals Accordion */}
               <div 
-                className="mt-3 pt-2 border-t border-stone-800/60 flex items-center justify-between text-[11px] text-stone-400"
+                className="mt-3 pt-2 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-500 font-medium"
                 onClick={(e) => {
                   e.stopPropagation();
                   onToggleExpand(item.id);
                 }}
               >
-                <span className="hover:text-stone-200 transition-colors flex items-center gap-1">
+                <span className="hover:text-stone-800 transition-colors flex items-center gap-1">
                   Used in {item.usedInMeals.length} meal{item.usedInMeals.length > 1 ? 's' : ''}
-                  {isExpanded ? <ChevronUp className="w-3 h-3 text-amber-400" /> : <ChevronDown className="w-3 h-3 text-stone-500" />}
+                  {isExpanded ? <ChevronUp className="w-3 h-3 text-orange-600" /> : <ChevronDown className="w-3 h-3 text-stone-400" />}
                 </span>
 
                 {onAskAiForProduce && !item.isStaple && (
@@ -707,7 +698,7 @@ const IngredientCategorySection: React.FC<IngredientCategorySectionProps> = ({
                       onAskAiForProduce(item);
                     }}
                     title="Ask AI how to select this vegetable at the mandi"
-                    className="text-[10px] text-amber-400 hover:underline flex items-center gap-1 cursor-pointer"
+                    className="text-[10px] text-orange-600 font-bold hover:underline flex items-center gap-1 cursor-pointer"
                   >
                     <Sparkles className="w-3 h-3" /> Select Tips
                   </button>
@@ -717,16 +708,16 @@ const IngredientCategorySection: React.FC<IngredientCategorySectionProps> = ({
               {/* Expanded Meals Sublist */}
               {isExpanded && (
                 <div 
-                  className="mt-2 p-2.5 bg-stone-900 rounded-lg border border-stone-800 text-[11px] space-y-1 animate-fadeIn"
+                  className="mt-2 p-2.5 bg-white rounded-lg border border-stone-200 text-[11px] space-y-1 shadow-2xs"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <div className="font-semibold text-stone-300 text-[10px] uppercase tracking-wider mb-1">
+                  <div className="font-bold text-stone-700 text-[10px] uppercase tracking-wider mb-1">
                     Scheduled In This Week's Menu:
                   </div>
                   {item.usedInMeals.map((m, idx) => (
-                    <div key={idx} className="flex items-center justify-between text-stone-400">
+                    <div key={idx} className="flex items-center justify-between text-stone-600">
                       <span>• {m.dayName} {m.mealSlot}:</span>
-                      <span className="text-stone-300 font-medium text-right truncate max-w-[140px]">{m.recipeTitle}</span>
+                      <span className="text-stone-800 font-semibold text-right truncate max-w-[140px]">{m.recipeTitle}</span>
                     </div>
                   ))}
                 </div>
